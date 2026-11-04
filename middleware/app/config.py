@@ -23,7 +23,8 @@ class Settings(BaseSettings):
     anthropic_api_key: str = ""
     anthropic_model: str = "claude-sonnet-5-5"
     gemini_api_key: str = ""
-    gemini_model: str = "gemini-2.5-flash"
+    gemini_model: str = "gemini-3.8-flash"
+    gemini_fallback_models: str = "gemini-3.7-flash,gemini-3.5-flash-lite"
     llm_max_tokens: int = 2048
 
     cors_origins: str = "http://localhost:5173,http://127.0.0.1:5173"

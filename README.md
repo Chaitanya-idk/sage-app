@@ -77,7 +77,7 @@ Open http://localhost:5173.
 | `RAG_MIN_SCORE` | Cosine-similarity threshold; below it, `needs_expert` is set | `0.35` |
 | `LLM_PROVIDER` | `anthropic` or `gemini` | `anthropic` |
 | `ANTHROPIC_API_KEY` / `ANTHROPIC_MODEL` | Anthropic credentials and model | `claude-sonnet-5-5` |
-| `GEMINI_API_KEY` / `GEMINI_MODEL` | Gemini credentials and model | `gemini-2.5-flash` |
+| `GEMINI_API_KEY` / `GEMINI_MODEL` | Gemini credentials and model | `gemini-3.8-flash` |
 | `LLM_MAX_TOKENS` | Max output tokens | `2048` |
 | `CORS_ORIGINS` | Comma-separated allowed origins | Vite dev origins |
 | `MAX_IMAGE_MB` | Upload size limit | `10` |

@@ -21,13 +21,18 @@ class Retriever:
             with self._lock:
                 if self._collection is None:
                     import chromadb
-                    from chromadb.utils.embedding_functions import SentenceTransformerEmbeddingFunction
+                    from sentence_transformers import SentenceTransformer
 
+                    # Newer Chroma stores an embedding-function config in the collection and rejects a different
+                    # one, so open it without one and pass query vectors computed with EMBEDDING_MODEL ourselves.
+                    self._encoder = SentenceTransformer(self.s.embedding_model)
                     client = chromadb.PersistentClient(path=self.s.chroma_path)
-                    ef = SentenceTransformerEmbeddingFunction(model_name=self.s.embedding_model)
-                    self._collection = client.get_collection(self.s.chroma_collection, embedding_function=ef)
+                    self._collection = client.get_collection(self.s.chroma_collection, embedding_function=None)
                     log.info("chroma collection '%s' loaded", self.s.chroma_collection)
         return self._collection
+
+    def _embed(self, text: str) -> list[list[float]]:
+        return self._encoder.encode([text], normalize_embeddings=True).tolist()
 
     def status(self) -> dict[str, Any]:
         return {"collection": self.s.chroma_collection, "doc_count": self._get_collection().count(),
@@ -36,9 +41,10 @@ class Retriever:
     def query(self, text: str, crop: Optional[str] = None, k: Optional[int] = None) -> list[RetrievedChunk]:
         col = self._get_collection()
         k = k or self.s.rag_top_k
-        res = col.query(query_texts=[text], n_results=k, where={"crop_clean": crop.lower()} if crop else None)
+        vec = self._embed(text)
+        res = col.query(query_embeddings=vec, n_results=k, where={"crop_clean": crop.lower()} if crop else None)
         if crop and not res["ids"][0]:
-            res = col.query(query_texts=[text], n_results=k)  # crop filter matched nothing: search everything
+            res = col.query(query_embeddings=vec, n_results=k)  # crop filter matched nothing: search everything
         return [
             RetrievedChunk(id=str(cid), text=doc or "", source=_source(meta or {}),
                            score=round(1.0 - float(dist), 4), metadata=meta or {})
@@ -51,7 +57,7 @@ class Retriever:
         col = self._get_collection()
         d = disease.strip().lower()
         for variant in dict.fromkeys([d, d.replace(" ", "_"), d.replace("_", " ")]):
-            res = col.get(where={"$and": [{"crop_clean": crop.lower()}, {"disease_clean": variant}]},
+            res = col.get(where={"$and": [{"crop_clean": crop.lower()}, {"disease_clean": variant}, {"disease_type": {"$ne": ""}}]},
                           limit=25, include=["metadatas"])
             out: dict[str, str] = {}
             for m in res.get("metadatas") or []:
