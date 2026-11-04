@@ -323,7 +323,7 @@ npm run dev
 
 ---
 
-## 📂 5. File-by-file guide
+## 📂 6. File-by-file guide
 
 ```text
 sage-app/
@@ -429,7 +429,7 @@ sage-app/
 
 ---
 
-## 🧭 6. Key design decisions
+## 🧭 7. Key design decisions
 
 | Decision | Reason |
 |---|---|
@@ -445,7 +445,7 @@ sage-app/
 
 ---
 
-## 🛠️ 7. Troubleshooting
+## 🛠️ 8. Troubleshooting
 
 | Symptom | Likely cause | Fix |
 |---|---|---|
