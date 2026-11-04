@@ -1,0 +1,49 @@
+# Secrets
+.env
+.env.*
+!.env.example
+
+# Vector store & models (large, local only)
+middleware/chroma_db/
+chroma_db/
+*.sqlite3
+*.pth
+*.pt
+*.bin
+*.safetensors
+*.onnx
+*.ckpt
+*.gguf
+*.h5
+models/
+checkpoints/
+.cache/
+hf_cache/
+
+# Python
+__pycache__/
+*.py[cod]
+.venv/
+venv/
+env/
+.pytest_cache/
+.mypy_cache/
+.ruff_cache/
+*.egg-info/
+.coverage
+htmlcov/
+
+# Node
+node_modules/
+dist/
+*.tsbuildinfo
+npm-debug.log*
+yarn-error.log*
+pnpm-debug.log*
+
+# Editors / OS
+.vscode/
+.idea/
+.DS_Store
+Thumbs.db
+*.log
