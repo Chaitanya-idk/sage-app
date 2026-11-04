@@ -8,6 +8,7 @@ from app.llm.base import LLMProvider
 from app.schemas import Advisory, RetrievedChunk
 
 log = logging.getLogger("sage.advisory")
+MAX_CHUNK_CHARS = 1200  # keeps the prompt small and the LLM fast
 
 ADVISORY_SYSTEM = """You are SAGE, an agronomy advisor. You write a treatment advisory for a farmer.
 Rules:
@@ -37,7 +38,7 @@ CONTEXT:
 def format_chunks(chunks: list[RetrievedChunk]) -> str:
     if not chunks:
         return "(no knowledge chunks retrieved)"
-    return "\n\n".join(f"[{c.id}] source: {c.source} (relevance {c.score:.2f})\n{c.text}" for c in chunks)
+    return "\n\n".join(f"[{c.id}] source: {c.source} (relevance {c.score:.2f})\n{c.text[:MAX_CHUNK_CHARS]}" for c in chunks)
 
 
 def build_context(prediction: dict, farm: dict, chunks: list[RetrievedChunk], advisory: dict | None = None) -> str:

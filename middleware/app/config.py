@@ -25,7 +25,9 @@ class Settings(BaseSettings):
     gemini_api_key: str = ""
     gemini_model: str = "gemini-3.8-flash"
     gemini_fallback_models: str = "gemini-3.7-flash,gemini-3.5-flash-lite"
+    gemini_thinking_level: str = "low"
     llm_max_tokens: int = 2048
+    llm_timeout_s: float = 90.0
 
     cors_origins: str = "http://localhost:5173,http://127.0.0.1:5173"
     log_level: str = "INFO"

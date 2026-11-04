@@ -2,24 +2,33 @@ from typing import AsyncIterator
 
 from app.llm.base import LLMProvider
 
+COOLDOWN_S = 120  # skip a busy model for this long
+
 
 class GeminiProvider(LLMProvider):
     name = "gemini"
 
-    def __init__(self, api_key: str, model: str, max_tokens: int, fallbacks: list[str] | None = None):
+    def __init__(self, api_key: str, model: str, max_tokens: int, fallbacks: list[str] | None = None,
+                 timeout_s: float = 90, thinking_level: str = "low"):
         from google import genai
         from google.genai import types
 
-        # Cap each request (ms) so an overloaded model fails fast and the fallback list is tried.
-        self.client = genai.Client(api_key=api_key, http_options=types.HttpOptions(timeout=30_000))
+        # Per-request cap (ms). Gemini also uses it as the server-side deadline (504 DEADLINE_EXCEEDED when hit),
+        # so it must leave room for a full advisory; overloaded/expired calls then move to the fallback models.
+        self.client = genai.Client(api_key=api_key, http_options=types.HttpOptions(timeout=int(timeout_s * 1000)))
+        self.thinking_level = thinking_level.strip().lower()
+        self._cooldown: dict[str, float] = {}
         self.model, self.max_tokens = model, max_tokens
         self.models = [model] + [m for m in (fallbacks or []) if m and m != model]
 
     def _cfg(self, system: str, json_mode: bool):
         from google.genai import types
 
+        # Low thinking keeps Gemini 3.x fast for this grounded, extractive task. Empty GEMINI_THINKING_LEVEL = model default.
+        thinking = types.ThinkingConfig(thinking_level=self.thinking_level) if self.thinking_level else None
         return types.GenerateContentConfig(system_instruction=system, max_output_tokens=self.max_tokens,
-                                           response_mime_type="application/json" if json_mode else None)
+                                           response_mime_type="application/json" if json_mode else None,
+                                           thinking_config=thinking)
 
     @staticmethod
     def _contents(messages: list[dict]) -> list[dict]:
@@ -27,23 +36,25 @@ class GeminiProvider(LLMProvider):
                 for m in messages]
 
     async def _retry(self, call):
-        """Retry overload / rate-limit errors (429, 500, 503) with backoff, then fall back to the next model."""
-        import asyncio
+        """Try each model once; a model that is overloaded / rate-limited / past deadline (429, 500, 503, 504)
+        is put on a short cooldown so later requests go straight to a model that is answering."""
         import logging
+        import time
 
         from google.genai import errors
 
+        now = time.monotonic()
+        ready = [m for m in self.models if self._cooldown.get(m, 0) <= now]
         last = None
-        for model in self.models:
-            for attempt in range(2):
-                try:
-                    return await call(model)
-                except errors.APIError as e:
-                    if getattr(e, "code", None) not in (429, 500, 503):
-                        raise
-                    last = e
-                    logging.getLogger("sage.llm").warning("gemini %s busy (%s), attempt %d", model, e.code, attempt + 1)
-                    await asyncio.sleep(1.5 * (attempt + 1))
+        for model in ready or self.models:  # if every model is cooling down, try them all anyway
+            try:
+                return await call(model)
+            except errors.APIError as e:
+                if getattr(e, "code", None) not in (429, 500, 503, 504):
+                    raise
+                last = e
+                self._cooldown[model] = time.monotonic() + COOLDOWN_S
+                logging.getLogger("sage.llm").warning("gemini %s unavailable (%s); trying next model", model, e.code)
         raise last
 
     async def complete(self, system: str, messages: list[dict], json_mode: bool = False) -> str:
