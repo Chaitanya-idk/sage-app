@@ -12,7 +12,12 @@
   - `src/types/sage.ts`: every API type. Keep it in sync with `middleware/app/schemas.py` and the backend
   - `src/services/api.ts`: the only module that calls `fetch`; turns HTTP status codes into user-facing messages
   - `src/components/`: one component per UI area; theme tokens (moss/soil/wheat/clay) and animations live in `src/index.css`
-- Backend source is in `../Sage-backend`. Read it; never modify it.
+- `backend/sage_inference_server.ipynb` — cloud GPU inference server (Kaggle/Colab): FastAPI + Cloudflare tunnel,
+  base model loaded once, per-crop LoRA adapters attached on demand from `modelpath.txt` paths. It implements the
+  `/health`, `/api/v1/crops`, `/api/v1/model/status`, `/api/v1/predict` contract. Class lists live in its `CROP_CLASSES` cell.
+  `backend/testing -latest.ipynb` is the original evaluation notebook (reference only).
+- The adapters return only a class name; the middleware fills `disease_type`, `pathogen` and `plant_organ` from ChromaDB metadata (`Retriever.taxonomy`).
+- Legacy backend source is in `../Sage-backend`. Read it; never modify it.
 
 ## Conventions
 - Middleware errors are JSON `{"error": code, "detail": message}`, raised through `APIError`.

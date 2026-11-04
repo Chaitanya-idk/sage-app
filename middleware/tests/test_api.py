@@ -61,6 +61,9 @@ class FakeRetriever:
             raise RuntimeError("chroma broke")
         return [RetrievedChunk(id="c1", text="Use copper.", source="Tomato — Early blight", score=0.8)]
 
+    def taxonomy(self, crop, disease):
+        return {"disease_type": "Fungal", "pathogen": "Alternaria solani"}
+
 
 class FakeLLM:
     name, model = "fake", "fake-1"
@@ -114,6 +117,9 @@ def test_diagnose_full_pipeline(ctx):
     assert body["retrieval"]["chunks"][0]["id"] == "c1"
     assert [c["chunk_id"] for c in body["advisory"]["citations"]] == ["c1"]  # bogus citation dropped
     assert body["partial_failure"] is None and body["farm_context"]["growth_stage"] == "flowering"
+    p = body["prediction"]["prediction"]
+    assert p["disease_type"] == "Fungal" and p["pathogen"] == "Alternaria solani"  # enrichment fills only empty fields
+    assert p["attributes"]["enriched_from_knowledge_base"] == ["disease_type"]
 
 
 def test_invalid_json_retried_once(ctx):

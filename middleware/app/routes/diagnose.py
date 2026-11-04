@@ -66,6 +66,21 @@ async def diagnose(
                               "notes": notes}.items() if v}
     failure = PartialFailure()
 
+    # b2. the fine-tuned model returns only a class name: fill taxonomy fields from the knowledge base
+    p = prediction.setdefault("prediction", {})
+    if p.get("class_name") and p.get("is_canonical_match") is not False and not is_healthy(prediction):
+        try:
+            tax = await asyncio.to_thread(retriever.taxonomy, prediction.get("crop") or crop, p["class_name"])
+            filled = []
+            for k, v in tax.items():
+                if not p.get(k):
+                    p[k] = v
+                    filled.append(k)
+            if filled:
+                p.setdefault("attributes", {})["enriched_from_knowledge_base"] = filled
+        except Exception as e:  # noqa: BLE001 — enrichment is best-effort
+            log.warning("taxonomy enrichment failed: %s", e)
+
     # c. retrieval
     retrieval = Retrieval(query=build_query(prediction))
     if is_healthy(prediction):

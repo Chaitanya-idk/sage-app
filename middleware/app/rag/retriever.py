@@ -46,6 +46,23 @@ class Retriever:
         ]
 
 
+    def taxonomy(self, crop: str, disease: str) -> dict[str, str]:
+        """Look up disease_type / pathogen / plant_organ for (crop, disease) from chunk metadata. No embedding needed."""
+        col = self._get_collection()
+        d = disease.strip().lower()
+        for variant in dict.fromkeys([d, d.replace(" ", "_"), d.replace("_", " ")]):
+            res = col.get(where={"$and": [{"crop_clean": crop.lower()}, {"disease_clean": variant}]},
+                          limit=25, include=["metadatas"])
+            out: dict[str, str] = {}
+            for m in res.get("metadatas") or []:
+                for k in ("disease_type", "pathogen", "plant_organ"):
+                    if m and m.get(k) and k not in out:
+                        out[k] = str(m[k])
+            if out:
+                return out
+        return {}
+
+
 def _source(meta: dict) -> str:
     label = " — ".join(str(meta[k]) for k in ("crop", "disease") if meta.get(k)) or "knowledge base"
     if meta.get("source_row") is not None:

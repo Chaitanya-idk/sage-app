@@ -17,6 +17,19 @@ The frontend talks **only** to the middleware. All secrets live in `middleware/.
 - The ChromaDB folder at `middleware/chroma_db/` (≈1.7 GB, not in git — copy it from Drive)
 - A running SAGE backend notebook on Kaggle with its trycloudflare.com URL
 
+## 0. Inference backend (cloud GPU)
+
+`backend/sage_inference_server.ipynb` loads Qwen2.5-VL-3B once and attaches each crop's LoRA adapter from
+`IDK-Chaitanya/SAGE5Class-cp` **on demand**, using the paths in `backend/modelpath.txt`. The first request for a crop
+downloads and attaches its adapter; after that, switching crops is instant.
+
+1. On Kaggle, create a notebook → **File → Import notebook** → `backend/sage_inference_server.ipynb`.
+2. Settings: Accelerator **GPU T4 x2**, Internet **On**. Optionally add the Kaggle model *Qwen2.5-VL 3B-Instruct* (Transformers) so the base weights don't download.
+3. **Add-ons → Secrets**: add `HF_TOKEN` (and optionally `SAGE_API_KEY`), attached to this notebook.
+4. **Run All**. The last cells print `BACKEND_URL=https://….trycloudflare.com`.
+
+The notebook also runs on Colab (secrets via the 🔑 panel); there the base model downloads from the Hub.
+
 ## 1. Middleware
 
 ```powershell

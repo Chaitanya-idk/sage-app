@@ -1,0 +1,6 @@
+Base - IDK-Chaitanya/SAGE5Class-cp
+corn - corn_5ep/best_adapter
+rice - rice/adapter
+soybean - soybean_5ep/best_adapter
+tomato - tomato/adapter
+wheat - wheat/adapter
