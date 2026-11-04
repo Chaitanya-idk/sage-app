@@ -55,6 +55,7 @@
 @layer base {
   body {
     @apply bg-soil-50 font-sans text-moss-950 antialiased;
+    overflow-wrap: anywhere; /* long words/ids wrap instead of overflowing their boxes */
     background-image:
       radial-gradient(60rem 40rem at 110% -10%, rgb(198 220 177 / 0.55), transparent 60%),
       radial-gradient(50rem 35rem at -10% 110%, rgb(242 207 117 / 0.25), transparent 60%);

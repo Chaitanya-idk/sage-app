@@ -42,7 +42,7 @@ export default function ImageDropzone({ file, onChange, onError, scanning, disab
       {pickers}
       {url && file ? (
         <div className="group relative animate-pop overflow-hidden rounded-2xl border border-soil-200 bg-moss-950">
-          <img src={url} alt="Selected leaf" className={`mx-auto max-h-72 w-full object-contain transition duration-700 ${scanning ? 'scale-[1.02] saturate-[1.2]' : ''}`} />
+          <img src={url} alt="Selected leaf" className={`mx-auto h-72 w-full object-contain sm:h-96 lg:h-[26rem] transition duration-700 ${scanning ? 'scale-[1.02] saturate-[1.2]' : ''}`} />
           {scanning && (
             <div className="pointer-events-none absolute inset-0 animate-fade-in">
               <div className="absolute inset-0 bg-[linear-gradient(rgb(119_168_82/0.12)_1px,transparent_1px),linear-gradient(90deg,rgb(119_168_82/0.12)_1px,transparent_1px)] bg-[size:24px_24px]" />
@@ -67,9 +67,9 @@ export default function ImageDropzone({ file, onChange, onError, scanning, disab
           onDragOver={(e) => { e.preventDefault(); setDrag(true); }}
           onDragLeave={() => setDrag(false)}
           onDrop={(e) => { e.preventDefault(); setDrag(false); accept(e.dataTransfer.files[0]); }}
-          className={`flex cursor-pointer flex-col items-center justify-center gap-3 rounded-2xl border-2 border-dashed px-4 py-9 text-center transition-all duration-300
+          className={`flex min-h-72 cursor-pointer flex-col items-center justify-center gap-3 rounded-2xl border-2 border-dashed px-4 py-10 text-center sm:min-h-96 lg:min-h-[26rem] transition-all duration-300
             ${drag ? 'scale-[1.01] border-moss-500 bg-moss-50' : 'border-soil-300 bg-soil-50/60 hover:border-moss-400 hover:bg-moss-50/50'}`}>
-          <div className={`grid size-14 place-items-center rounded-2xl bg-white shadow-sm transition-transform duration-300 ${drag ? '-translate-y-1 scale-110' : ''}`}>
+          <div className={`grid size-16 place-items-center rounded-2xl bg-white shadow-sm transition-transform duration-300 ${drag ? '-translate-y-1 scale-110' : ''}`}>
             {drag ? <Upload className="size-6 text-moss-600" /> : <ImagePlus className="size-6 text-moss-600" />}
           </div>
           <div>

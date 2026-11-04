@@ -16,10 +16,10 @@ export default function CropSelector({ crops, loading, value, onChange, disabled
         )}
       </div>
 
-      <div role="radiogroup" aria-labelledby="crop-label" className="grid grid-cols-5 gap-2">
+      <div role="radiogroup" aria-labelledby="crop-label" className="grid grid-cols-3 gap-2 sm:grid-cols-5">
         {loading && !crops.length
           ? Array.from({ length: 5 }, (_, i) => (
-              <div key={i} className="relative h-[72px] overflow-hidden rounded-xl bg-soil-100"><div className="shimmer absolute inset-0" /></div>
+              <div key={i} className="relative h-[76px] overflow-hidden rounded-xl bg-soil-100"><div className="shimmer absolute inset-0" /></div>
             ))
           : crops.map((c, i) => {
               const on = c.crop_id === value;
@@ -32,7 +32,7 @@ export default function CropSelector({ crops, loading, value, onChange, disabled
                   <span className={`text-2xl transition-transform duration-300 ${on ? 'scale-110' : 'group-hover:scale-110'}`} aria-hidden>
                     {EMOJI[c.crop_id] ?? '🌱'}
                   </span>
-                  <span className="truncate">{c.display_name}</span>
+                  <span className="w-full text-center leading-tight">{c.display_name}</span>
                 </button>
               );
             })}

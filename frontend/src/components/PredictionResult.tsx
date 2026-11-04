@@ -6,9 +6,9 @@ function Field({ icon: Icon, label, value, italic, delay }: {
   icon: typeof Leaf; label: string; value?: string | null; italic?: boolean; delay: number;
 }) {
   return (
-    <div style={{ animationDelay: `${delay}ms` }} className="animate-fade-up rounded-xl border border-soil-200 bg-white p-4 transition hover:-translate-y-0.5 hover:shadow-md">
+    <div style={{ animationDelay: `${delay}ms` }} className="min-w-0 animate-fade-up rounded-xl border border-soil-200 bg-white p-4 transition hover:-translate-y-0.5 hover:shadow-md">
       <div className="flex items-center gap-2 text-soil-600"><Icon className="size-4" /><span className="label">{label}</span></div>
-      <p className={`mt-1.5 text-sm text-moss-950 ${italic ? 'italic' : ''}`}>{value || <span className="text-soil-400 not-italic">Not reported</span>}</p>
+      <p className={`mt-1.5 break-words text-sm leading-relaxed text-moss-950 ${italic ? 'italic' : ''}`}>{value || <span className="text-soil-400 not-italic">Not reported</span>}</p>
     </div>
   );
 }
@@ -49,7 +49,7 @@ export default function PredictionResult({ result }: { result: DiagnoseResponse 
         ? 'bg-gradient-to-br from-moss-500 to-moss-700' : 'bg-gradient-to-br from-wheat-500 via-soil-600 to-clay-700'}`}>
         <Leaf className="absolute -right-6 -top-6 size-40 animate-float opacity-15" aria-hidden />
         <p className="text-xs uppercase tracking-[0.2em] opacity-80">{r.crop} · diagnosis</p>
-        <h3 className="mt-1 animate-pop font-display text-3xl font-bold sm:text-4xl">{name}</h3>
+        <h3 className="mt-1 animate-pop break-words font-display text-2xl font-bold sm:text-4xl">{name}</h3>
         <div className="mt-3 flex flex-wrap gap-2 text-xs">
           <span className="inline-flex items-center gap-1 rounded-full bg-white/20 px-2.5 py-1 backdrop-blur">
             {healthy ? <CircleCheck className="size-3.5" /> : <TriangleAlert className="size-3.5" />}
@@ -61,12 +61,12 @@ export default function PredictionResult({ result }: { result: DiagnoseResponse 
             </span>
           )}
           {p.matched_taxonomy_class && p.matched_taxonomy_class !== name && (
-            <span className="rounded-full bg-white/20 px-2.5 py-1 backdrop-blur">≈ {p.matched_taxonomy_class}</span>
+            <span className="max-w-full truncate rounded-full bg-white/20 px-2.5 py-1 backdrop-blur">≈ {p.matched_taxonomy_class}</span>
           )}
         </div>
       </div>
 
-      <div className="grid gap-3 sm:grid-cols-2">
+      <div className="grid gap-3 md:grid-cols-2">
         <Field icon={Bug} label="Disease type" value={p.disease_type} delay={60} />
         <Field icon={Leaf} label="Plant organ" value={p.plant_organ} delay={120} />
         <Field icon={Microscope} label="Pathogen" value={p.pathogen} italic delay={180} />
