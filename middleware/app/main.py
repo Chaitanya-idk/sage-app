@@ -14,6 +14,12 @@ logging.basicConfig(level=settings.log_level.upper(),
                     format="%(asctime)s level=%(levelname)s logger=%(name)s msg=%(message)s")
 log = logging.getLogger("sage.middleware")
 
+from app.config import ENV_FILE  # noqa: E402
+
+if not ENV_FILE.exists():
+    log.warning("%s not found — using defaults. Copy .env.example to .env and fill it in.", ENV_FILE)
+log.info("backend_url=%s llm_provider=%s chroma=%s", settings.backend_url, settings.llm_provider, settings.chroma_path)
+
 app = FastAPI(title="SAGE Middleware", version="1.0.0")
 app.add_middleware(CORSMiddleware, allow_origins=settings.cors_list, allow_credentials=True,
                    allow_methods=["*"], allow_headers=["*"])
