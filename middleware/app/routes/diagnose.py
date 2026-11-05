@@ -83,7 +83,10 @@ async def diagnose(
 
     # c. retrieval
     retrieval = Retrieval(query=build_query(prediction))
-    if is_healthy(prediction):
+    undetermined = not p.get("class_name")  # the model's output could not be parsed into a known disease
+    if undetermined:
+        retrieval.skipped_reason = "The disease could not be determined from the model output."
+    elif is_healthy(prediction):
         retrieval.skipped_reason = "Plant classified as healthy; no disease knowledge retrieved."
     else:
         try:
@@ -95,7 +98,9 @@ async def diagnose(
 
     # d. LLM synthesis
     advisory = None
-    if llm is None:
+    if undetermined:
+        failure.llm = "No advisory: the disease could not be determined. Try a clearer photo."
+    elif llm is None:
         failure.llm = "LLM is not configured (set LLM_PROVIDER and its API key in middleware/.env)."
     elif failure.retrieval is None:
         try:

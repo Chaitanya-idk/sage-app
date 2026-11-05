@@ -13,10 +13,10 @@
   - `src/services/api.ts`: the only module that calls `fetch`; turns HTTP status codes into user-facing messages
   - `src/components/`: one component per UI area; theme tokens (moss/soil/wheat/clay) and animations live in `src/index.css`
 - `backend/sage_inference_server.ipynb` — cloud GPU inference server (Kaggle/Colab): FastAPI + Cloudflare tunnel,
-  base model loaded once, per-crop LoRA adapters attached on demand from `modelpath.txt` paths. It implements the
-  `/health`, `/api/v1/crops`, `/api/v1/model/status`, `/api/v1/predict` contract. Class lists live in its `CROP_CLASSES` cell.
+  base model loaded once, per-crop LoRA adapters attached on demand from `modelpath.txt` locations. It implements the
+  `/health`, `/api/v1/crops`, `/api/v1/model/status`, `/api/v1/predict` contract. Prompts, labels and output parsing come from `sage_train/` in TejaAnish/sage, pinned by `SAGE_TRAIN_COMMIT`; never rewrite them. The model sees only the photo and crop, so `prompt`, `max_new_tokens` and `temperature` are ignored, and `class_name` is `null` when output can't be parsed.
   `backend/testing -latest.ipynb` is the original evaluation notebook (reference only).
-- The adapters return only a class name; the middleware fills `disease_type`, `pathogen` and `plant_organ` from ChromaDB metadata (`Retriever.taxonomy`).
+- The adapters return only a class name; the notebook fills `disease_type` and `pathogen` from the `sage_train` catalog, and the middleware fills anything still missing (such as `plant_organ`) from ChromaDB metadata (`Retriever.taxonomy`).
 - Legacy backend source is in `../Sage-backend`. Read it; never modify it.
 
 ## Conventions

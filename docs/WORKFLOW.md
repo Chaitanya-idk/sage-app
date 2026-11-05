@@ -183,7 +183,7 @@ flowchart LR
 **Explained**
 
 - **What LoRA is:** instead of retraining 3 billion weights, LoRA trains a few small extra matrices that slightly adjust the model's behaviour. That makes each crop adapter tiny compared with the base model.
-- **On-demand loading:** the first request for tomato downloads `tomato/adapter` from `IDK-Chaitanya/SAGE5Class-cp` (paths come from `modelpath.txt`) and calls `load_adapter`. Later requests just call `set_adapter("tomato")`.
+- **On-demand loading:** the first request for tomato downloads its adapter files from the location in `modelpath.txt` (a folder in the Base repo, or `<repo>:<folder>` for a crop's own repo, like rice) and calls `load_adapter`. Later requests just call `set_adapter("tomato")`.
 - **Why not load all five at startup?** Startup stays fast, and you only download what you actually use. To preload some anyway, list them in `PRELOAD_CROPS` in the notebook.
 - **Canonical match:** the model's text answer is compared with the crop's class list. An exact or contained match gives `is_canonical_match = true`. Anything else is flagged and triggers the expert warning.
 
@@ -341,7 +341,7 @@ sage-app/
 | File | What it is | Why we created it |
 |---|---|---|
 | `sage_inference_server.ipynb` | The cloud GPU server. Loads Qwen2.5-VL once, attaches per-crop LoRA adapters on demand, serves the API, opens a Cloudflare tunnel | Free GPUs live in notebooks; this turns one into an API the middleware can call |
-| `modelpath.txt` | Maps each crop to its adapter folder in the HF repo | One editable source of truth for adapter locations |
+| `modelpath.txt` | Maps each crop to its adapter folder, optionally in its own HF repo (`<repo>:<folder>`) | One editable source of truth for adapter locations |
 | `.env.example` | Template for `HF_TOKEN` and `SAGE_API_KEY` | Documents secrets without committing them |
 | `testing -latest.ipynb` | Original evaluation notebook | Reference for the prompt style and loading code that are known to work |
 

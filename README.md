@@ -20,7 +20,7 @@ The frontend talks **only** to the middleware. All secrets live in `middleware/.
 ## 0. Inference backend (cloud GPU)
 
 `backend/sage_inference_server.ipynb` loads Qwen2.5-VL-3B once and attaches each crop's LoRA adapter from
-`IDK-Chaitanya/SAGE5Class-cp` **on demand**, using the paths in `backend/modelpath.txt`. The first request for a crop
+its Hugging Face repo **on demand**, using the locations in `backend/modelpath.txt`. The first request for a crop
 downloads and attaches its adapter; after that, switching crops is instant.
 
 1. On Kaggle, create a notebook → **File → Import notebook** → `backend/sage_inference_server.ipynb`.

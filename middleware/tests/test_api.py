@@ -143,6 +143,19 @@ def test_needs_expert_when_not_canonical(ctx):
         PRED["prediction"]["is_canonical_match"] = True
 
 
+def test_undetermined_disease_skips_advisory(ctx):
+    saved = PRED["prediction"]["class_name"]
+    PRED["prediction"].update(class_name=None, is_canonical_match=False)
+    try:
+        r = post(ctx[0])
+        body = r.json()
+        assert r.status_code == 200 and body["prediction"]["prediction"]["class_name"] is None
+        assert body["advisory"] is None and body["retrieval"]["chunks"] == []
+        assert "could not be determined" in body["partial_failure"]["llm"]
+    finally:
+        PRED["prediction"].update(class_name=saved, is_canonical_match=True)
+
+
 def test_backend_timeout_maps_to_504(ctx):
     ctx[1].down = True
     r = post(ctx[0])
