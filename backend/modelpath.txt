@@ -1,7 +1,5 @@
-URL - https://huggingface.co/IDK-Chaitanya/SAGE5Class-cp
-Base - IDK-Chaitanya/SAGE5Class-cp
-corn - corn_5ep/best_adapter
+corn - tejaanish/sage-qwen25vl3b-corn-lora:checkpoints/last
 rice - tejaanish/sage-qwen25vl3b-rice-lora:checkpoints/last
-soybean - soybean_5ep/best_adapter
-tomato - tomato/adapter
-wheat - wheat/adapter
+soybean - tejaanish/sage-qwen25vl3b-soybean-lora:checkpoints/last
+tomato - tejaanish/sage-qwen25vl3b-tomato-lora:checkpoints/last
+wheat - tejaanish/sage-qwen25vl3b-wheat-lora:checkpoints/last

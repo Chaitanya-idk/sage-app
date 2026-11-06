@@ -1,0 +1,121 @@
+path,crop,disease,split,source,original_filename,size
+rice/Bacterial_Leaf_Blight/sample_1.jpg,rice,Bacterial Leaf Blight,test,SBRD,SBRD_11.jpg,300x300
+rice/Bacterial_Leaf_Blight/sample_2.jpg,rice,Bacterial Leaf Blight,test,BDCropVegeta,BDCropVegeta_1284.jpg,384x512
+rice/Bacterial_Leaf_Blight/sample_3.jpg,rice,Bacterial Leaf Blight,test,BDCropVegeta,BDCropVegeta_1819.jpg,384x512
+rice/Bacterial_Leaf_Blight/sample_4.jpg,rice,Bacterial Leaf Blight,test,BDCropVegeta,BDCropVegeta_226.jpg,384x512
+rice/Bacterial_Leaf_Blight/sample_5.jpg,rice,Bacterial Leaf Blight,test,BDCropVegeta,BDCropVegeta_773.jpg,384x512
+rice/Tungro/sample_1.jpg,rice,Tungro,test,SBRD,SBRD_136.jpg,424x283
+rice/Tungro/sample_2.jpg,rice,Tungro,test,BDCropVegeta,BDCropVegeta_1436.jpg,384x512
+rice/Tungro/sample_3.jpg,rice,Tungro,test,BDCropVegeta,BDCropVegeta_1802.jpg,384x512
+rice/Tungro/sample_4.jpg,rice,Tungro,test,BDCropVegeta,BDCropVegeta_2274.jpg,384x512
+rice/Tungro/sample_5.jpg,rice,Tungro,test,BDCropVegeta,BDCropVegeta_66.jpg,384x512
+rice/Blast/sample_1.jpg,rice,Blast,test,Bugwood,Bugwood_7.jpg,512x343
+rice/Blast/sample_2.jpg,rice,Blast,test,VQAPlantDise,VQAPlantDise_173.jpg,256x256
+rice/Blast/sample_3.jpg,rice,Blast,test,VQAPlantDise,VQAPlantDise_815.jpg,512x512
+rice/Blast/sample_4.jpg,rice,Blast,test,BDCropVegeta,BDCropVegeta_1693.jpg,384x512
+rice/Blast/sample_5.jpg,rice,Blast,test,BDCropVegeta,BDCropVegeta_3006.jpg,384x512
+rice/Brown_Spot/sample_1.jpg,rice,Brown Spot,test,SBRD,SBRD_124.jpg,300x300
+rice/Brown_Spot/sample_2.jpg,rice,Brown Spot,test,VQAPlantDise,VQAPlantDise_402.jpg,256x256
+rice/Brown_Spot/sample_3.jpg,rice,Brown Spot,test,BDCropVegeta,BDCropVegeta_1643.jpg,384x512
+rice/Brown_Spot/sample_4.jpg,rice,Brown Spot,test,BDCropVegeta,BDCropVegeta_2071.jpg,384x512
+rice/Brown_Spot/sample_5.jpg,rice,Brown Spot,test,VQAPlantDise,VQAPlantDise_564.jpg,256x256
+corn/Common_Rust/sample_1.jpg,corn,Common Rust,test,CDDM,CDDM_1090.jpg,256x256
+corn/Common_Rust/sample_2.jpg,corn,Common Rust,test,PlantWild,PlantWild_51.jpg,512x384
+corn/Common_Rust/sample_3.jpg,corn,Common Rust,test,PlantDoc,PlantDoc_19.jpg,512x384
+corn/Common_Rust/sample_4.jpg,corn,Common Rust,test,RadyPlantDis,RadyPlantDis_678.jpg,256x256
+corn/Common_Rust/sample_5.jpg,corn,Common Rust,test,Corn_Disease,Corn_Disease_118.jpg,512x384
+corn/Southern_Rust/sample_1.jpg,corn,Southern Rust,test,Bugwood,Bugwood_4.jpg,512x341
+corn/Southern_Rust/sample_2.jpg,corn,Southern Rust,test,Corn_Disease,Corn_Disease_76.jpg,512x341
+corn/Southern_Rust/sample_3.jpg,corn,Southern Rust,test,Corn_Disease,Corn_Disease_10.jpg,512x341
+corn/Southern_Rust/sample_4.jpg,corn,Southern Rust,test,Corn_Disease,Corn_Disease_51.jpg,512x341
+corn/Southern_Rust/sample_5.jpg,corn,Southern Rust,test,Corn_Disease,Corn_Disease_138.jpeg,512x384
+corn/Smut/sample_1.jpg,corn,Smut,test,Bugwood,Bugwood_3.jpg,512x382
+corn/Smut/sample_2.jpg,corn,Smut,test,PlantWild,PlantWild_66.jpg,210x158
+corn/Smut/sample_3.jpg,corn,Smut,test,PlantWild,PlantWild_14.jpg,512x357
+corn/Smut/sample_4.jpg,corn,Smut,test,Corn_Disease,Corn_Disease_114.jpg,512x384
+corn/Smut/sample_5.jpg,corn,Smut,test,Corn_Disease,Corn_Disease_164.jpg,512x384
+corn/Gray_Leaf_Spot/sample_1.jpg,corn,Gray Leaf Spot,test,BDCropVegeta,BDCropVegeta_102.jpg,256x256
+corn/Gray_Leaf_Spot/sample_2.jpg,corn,Gray Leaf Spot,test,BDCropVegeta,BDCropVegeta_399.jpg,256x256
+corn/Gray_Leaf_Spot/sample_3.jpg,corn,Gray Leaf Spot,test,Bugwood,Bugwood_1.jpg,512x343
+corn/Gray_Leaf_Spot/sample_4.jpg,corn,Gray Leaf Spot,test,New_Plant_Di,New_Plant_Di_375.jpg,256x256
+corn/Gray_Leaf_Spot/sample_5.jpg,corn,Gray Leaf Spot,test,Corn_Disease,Corn_Disease_56.jpg,512x341
+corn/Northern_Leaf_Blight/sample_1.jpg,corn,Northern Leaf Blight,test,CDDM,CDDM_147.jpg,256x256
+corn/Northern_Leaf_Blight/sample_2.jpg,corn,Northern Leaf Blight,test,CDDM,CDDM_462.jpg,256x256
+corn/Northern_Leaf_Blight/sample_3.jpg,corn,Northern Leaf Blight,test,CDDM,CDDM_777.jpg,256x256
+corn/Northern_Leaf_Blight/sample_4.jpg,corn,Northern Leaf Blight,test,LeafNet,LeafNet_1171.jpg,400x400
+corn/Northern_Leaf_Blight/sample_5.jpg,corn,Northern Leaf Blight,test,PlantVillage,PlantVillage_502.jpg,256x256
+soybean/Bacterial_Pustule/sample_1.jpg,soybean,Bacterial Pustule,test,Soybean_PNAS,Soybean_PNAS_1060.png,64x64
+soybean/Bacterial_Pustule/sample_2.jpg,soybean,Bacterial Pustule,test,Soybean_PNAS,Soybean_PNAS_14.png,64x64
+soybean/Bacterial_Pustule/sample_3.jpg,soybean,Bacterial Pustule,test,Soybean_PNAS,Soybean_PNAS_1677.png,64x64
+soybean/Bacterial_Pustule/sample_4.jpg,soybean,Bacterial Pustule,test,Soybean_PNAS,Soybean_PNAS_2418.png,64x64
+soybean/Bacterial_Pustule/sample_5.jpg,soybean,Bacterial Pustule,test,Soybean_PNAS,Soybean_PNAS_3585.png,64x64
+soybean/Rust/sample_1.jpg,soybean,Rust,test,PlantWild,PlantWild_106.jpg,512x340
+soybean/Rust/sample_2.jpg,soybean,Rust,test,PlantWild,PlantWild_65.jpg,512x256
+soybean/Rust/sample_3.jpg,soybean,Rust,test,Bugwood,Bugwood_16.jpg,512x384
+soybean/Rust/sample_4.jpg,soybean,Rust,test,Soybean_Dise,Soybean_Dise_121.jpg,512x442
+soybean/Rust/sample_5.jpg,soybean,Rust,test,Soybean_Dise,Soybean_Dise_67.jpg,512x384
+soybean/Bacterial_Blight/sample_1.jpg,soybean,Bacterial Blight,test,PlantWild,PlantWild_30.jpg,512x341
+soybean/Bacterial_Blight/sample_2.jpg,soybean,Bacterial Blight,test,Soybean_PNAS,Soybean_PNAS_1312.png,64x64
+soybean/Bacterial_Blight/sample_3.jpg,soybean,Bacterial Blight,test,Soybean_PNAS,Soybean_PNAS_1830.png,64x64
+soybean/Bacterial_Blight/sample_4.jpg,soybean,Bacterial Blight,test,Soybean_PNAS,Soybean_PNAS_2814.png,64x64
+soybean/Bacterial_Blight/sample_5.jpg,soybean,Bacterial Blight,test,Bugwood,Bugwood_11.jpg,512x384
+soybean/Frogeye_Leaf_Spot/sample_1.jpg,soybean,Frogeye Leaf Spot,test,PlantWild,PlantWild_104.jpg,512x341
+soybean/Frogeye_Leaf_Spot/sample_2.jpg,soybean,Frogeye Leaf Spot,test,Soybean_PNAS,Soybean_PNAS_1211.png,64x64
+soybean/Frogeye_Leaf_Spot/sample_3.jpg,soybean,Frogeye Leaf Spot,test,Soybean_PNAS,Soybean_PNAS_1493.png,64x64
+soybean/Frogeye_Leaf_Spot/sample_4.jpg,soybean,Frogeye Leaf Spot,test,Soybean_PNAS,Soybean_PNAS_2280.png,64x64
+soybean/Frogeye_Leaf_Spot/sample_5.jpg,soybean,Frogeye Leaf Spot,test,Soybean_PNAS,Soybean_PNAS_3999.png,64x64
+soybean/Brown_Spot/sample_1.jpg,soybean,Brown Spot,test,Soybean_PNAS,Soybean_PNAS_1029.png,64x64
+soybean/Brown_Spot/sample_2.jpg,soybean,Brown Spot,test,Soybean_PNAS,Soybean_PNAS_1374.png,64x64
+soybean/Brown_Spot/sample_3.jpg,soybean,Brown Spot,test,Soybean_PNAS,Soybean_PNAS_1794.png,64x64
+soybean/Brown_Spot/sample_4.jpg,soybean,Brown Spot,test,Soybean_PNAS,Soybean_PNAS_2122.png,64x64
+soybean/Brown_Spot/sample_5.jpg,soybean,Brown Spot,test,Soybean_PNAS,Soybean_PNAS_3518.png,64x64
+tomato/Septoria_Leaf_Blotch/sample_1.jpg,tomato,Septoria Leaf Blotch,test,AvinashPlant,AvinashPlant_1102.jpg,256x256
+tomato/Septoria_Leaf_Blotch/sample_2.jpg,tomato,Septoria Leaf Blotch,test,CDDM,CDDM_3721.jpg,448x448
+tomato/Septoria_Leaf_Blotch/sample_3.jpg,tomato,Septoria Leaf Blotch,test,New_Plant_Di,New_Plant_Di_1276.jpg,256x256
+tomato/Septoria_Leaf_Blotch/sample_4.jpg,tomato,Septoria Leaf Blotch,test,PlantVillage,PlantVillage_206.jpg,256x256
+tomato/Septoria_Leaf_Blotch/sample_5.jpg,tomato,Septoria Leaf Blotch,test,PlantWild,PlantWild_26.jpg,512x354
+tomato/Early_Blight/sample_1.jpg,tomato,Early Blight,test,AvinashPlant,AvinashPlant_1227.jpg,256x256
+tomato/Early_Blight/sample_2.jpg,tomato,Early Blight,test,LeafNet,LeafNet_406.jpg,400x400
+tomato/Early_Blight/sample_3.jpg,tomato,Early Blight,test,PlantVillage,PlantVillage_359.jpg,256x256
+tomato/Early_Blight/sample_4.jpg,tomato,Early Blight,test,RadyPlantDis,RadyPlantDis_1647.jpg,256x256
+tomato/Early_Blight/sample_5.jpg,tomato,Early Blight,test,PlantWild,PlantWild_150.jpg,512x284
+tomato/Late_Blight/sample_1.jpg,tomato,Late Blight,test,AvinashPlant,AvinashPlant_1090.jpg,256x256
+tomato/Late_Blight/sample_2.jpg,tomato,Late Blight,test,CDDM,CDDM_3628.jpg,227x227
+tomato/Late_Blight/sample_3.jpg,tomato,Late Blight,test,LeafNet,LeafNet_721.jpg,256x256
+tomato/Late_Blight/sample_4.jpg,tomato,Late Blight,test,PlantVillage,PlantVillage_124.jpg,256x256
+tomato/Late_Blight/sample_5.jpg,tomato,Late Blight,test,PlantVillage,PlantVillage_63.jpg,256x256
+tomato/Tomato_Leaf_Curl_Virus/sample_1.jpg,tomato,Tomato Leaf Curl Virus,test,RadyPlantDis,RadyPlantDis_17.jpg,400x400
+tomato/Tomato_Leaf_Curl_Virus/sample_2.jpg,tomato,Tomato Leaf Curl Virus,test,BDCropVegeta,BDCropVegeta_4074.jpg,256x256
+tomato/Tomato_Leaf_Curl_Virus/sample_3.jpg,tomato,Tomato Leaf Curl Virus,test,LeafNet,LeafNet_2543.jpg,256x256
+tomato/Tomato_Leaf_Curl_Virus/sample_4.jpg,tomato,Tomato Leaf Curl Virus,test,PlantVillage,PlantVillage_152.jpg,256x256
+tomato/Tomato_Leaf_Curl_Virus/sample_5.jpg,tomato,Tomato Leaf Curl Virus,test,RadyPlantDis,RadyPlantDis_563.jpg,256x256
+tomato/Bacterial_Leaf_Spot/sample_1.jpg,tomato,Bacterial Leaf Spot,test,AvinashPlant,AvinashPlant_1118.jpg,256x256
+tomato/Bacterial_Leaf_Spot/sample_2.jpg,tomato,Bacterial Leaf Spot,test,LeafNet,LeafNet_1081.jpg,256x256
+tomato/Bacterial_Leaf_Spot/sample_3.jpg,tomato,Bacterial Leaf Spot,test,New_Plant_Di,New_Plant_Di_1254.jpg,256x256
+tomato/Bacterial_Leaf_Spot/sample_4.jpg,tomato,Bacterial Leaf Spot,test,PlantVillage,PlantVillage_1735.jpg,256x256
+tomato/Bacterial_Leaf_Spot/sample_5.jpg,tomato,Bacterial Leaf Spot,test,RadyPlantDis,RadyPlantDis_2007.jpg,256x256
+wheat/Smut/sample_1.jpg,wheat,Smut,test,CDDM,CDDM_114.jpg,276x183
+wheat/Smut/sample_2.jpg,wheat,Smut,test,CDDM,CDDM_332.jpg,194x260
+wheat/Smut/sample_3.jpg,wheat,Smut,test,CDDM,CDDM_583.jpg,131x316
+wheat/Smut/sample_4.jpg,wheat,Smut,test,PlantWild,PlantWild_27.jpg,384x512
+wheat/Smut/sample_5.jpg,wheat,Smut,test,PlantWild,PlantWild_170.jpg,266x512
+wheat/Powdery_Mildew/sample_1.jpg,wheat,Powdery Mildew,test,PlantWild,PlantWild_155.jpg,384x512
+wheat/Powdery_Mildew/sample_2.jpg,wheat,Powdery Mildew,test,PlantWild,PlantWild_142.jpg,512x266
+wheat/Powdery_Mildew/sample_3.jpg,wheat,Powdery Mildew,test,PlantWild,PlantWild_257.jpg,391x512
+wheat/Powdery_Mildew/sample_4.jpg,wheat,Powdery Mildew,test,PlantWild,PlantWild_8.jpg,287x512
+wheat/Powdery_Mildew/sample_5.jpg,wheat,Powdery Mildew,test,Bugwood,Bugwood_37.jpg,512x385
+wheat/Rust/sample_1.jpg,wheat,Rust,test,VQAPlantDise,VQAPlantDise_1120.jpg,130x286
+wheat/Rust/sample_2.jpg,wheat,Rust,test,VQAPlantDise,VQAPlantDise_575.jpg,339x495
+wheat/Rust/sample_3.jpg,wheat,Rust,test,CDDM,CDDM_435.jpg,389x280
+wheat/Rust/sample_4.jpg,wheat,Rust,test,BDCropVegeta,BDCropVegeta_21.jpg,256x256
+wheat/Rust/sample_5.jpg,wheat,Rust,test,PlantWild,PlantWild_334.jpg,512x361
+wheat/Septoria_Leaf_Blotch/sample_1.jpg,wheat,Septoria Leaf Blotch,test,PlantWild,PlantWild_105.jpg,440x512
+wheat/Septoria_Leaf_Blotch/sample_2.jpg,wheat,Septoria Leaf Blotch,test,BDCropVegeta,BDCropVegeta_36.jpg,256x256
+wheat/Septoria_Leaf_Blotch/sample_3.jpg,wheat,Septoria Leaf Blotch,test,BDCropVegeta,BDCropVegeta_74.jpg,256x256
+wheat/Septoria_Leaf_Blotch/sample_4.jpg,wheat,Septoria Leaf Blotch,test,PlantWild,PlantWild_152.jpg,480x392
+wheat/Septoria_Leaf_Blotch/sample_5.jpg,wheat,Septoria Leaf Blotch,test,PlantWild,PlantWild_65.jpg,512x341
+wheat/Head_Scab/sample_1.jpg,wheat,Head Scab,test,Bugwood,Bugwood_1.jpg,373x512
+wheat/Head_Scab/sample_2.jpg,wheat,Head Scab,test,PlantWild,PlantWild_135.jpg,512x276
+wheat/Head_Scab/sample_3.jpg,wheat,Head Scab,test,PlantWild,PlantWild_293.jpg,512x315
+wheat/Head_Scab/sample_4.jpg,wheat,Head Scab,test,PlantWild,PlantWild_150.jpg,225x403
+wheat/Head_Scab/sample_5.jpg,wheat,Head Scab,test,PlantWild,PlantWild_60.jpg,364x512
